@@ -23,6 +23,7 @@ public:
 
     void moveStackInverted(stack<int>& origin, stack<int>& destiny)
     {
+        //mueve una pila para otra
         if (origin.size() == 0) throw runtime_error("queue is empty");
         for (;!origin.empty();) {
             
