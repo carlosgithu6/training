@@ -29,12 +29,12 @@ int main() {
         std::string filename = "C:\\Users\\carlo\\Desktop\\Preparing Interview\\bigfile1.txt";
         std::ofstream ostrm(filename);
         std::ifstream istrm(filename);
-       for (int i = 1;i <= 7000000;i++)
+       for (int i = 1;i <= 7000001;i++)
          {
              ostrm << line << std::endl;
          }
         std::unique_ptr<std::vector<std::string>> coll(new std::vector<std::string>());
-        coll->reserve(7000000);
+        coll->reserve(7000001);
         auto t01 = std::chrono::high_resolution_clock::now();
         std::transform(std::istream_iterator<Line>(istrm), std::istream_iterator<Line>(), std::back_inserter(*coll), getStr);
        // std::transform(std::istreambuf_iterator<Line>(istrm), std::istreambuf_iterator<Line>(), std::back_inserter(*coll), getStr);
