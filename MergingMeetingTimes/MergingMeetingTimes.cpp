@@ -1,3 +1,8 @@
+/*
+Your company built an in-house calendar tool called HiCal. You want to add a feature to see the times in a day when everyone is available.
+To do this, you’ll need to know when any team is having a meeting. In HiCal, a meeting is stored as an instance of a Meeting class with integer member variables startTime and endTime. These integers represent the number of 30-minute blocks past 9:00am.
+*/
+
 #include <iostream>
 #include <vector>
 #include<algorithm>
@@ -257,6 +262,45 @@ const lest::test tests[] = {
 //    return lest::run(tests, argc, argv);
 //}
 
+/*----------------------------------------------------*/
+/*
+Your company built an in-house calendar tool called HiCal. You want to add a feature to see the times in a day when everyone is available.
+To do this, you’ll need to know when any team is having a meeting. In HiCal, a meeting is stored as an instance of a Meeting class with integer member variables startTime and endTime. These integers represent the number of 30-minute blocks past 9:00am.
+
+Do not assume the meetings are in order. The meeting times are coming from multiple teams.
+
+Write a solution that's efficient even when we can't put a nice upper bound on the numbers representing our time ranges. Here we've simplified our times down to the number of 30-minute slots past 9:00 am. But we want the function to work even for very large numbers, like Unix timestamps. In any case, the spirit of the challenge is to merge meetings where startTime and endTime don't have an upper bound.
+*/
+
+
+
+
+
+vector<Meeting> mergeRanges(const vector<Meeting>& meetings)
+{
+    auto i_meetings = meetings;
+
+    sort(i_meetings.begin(), i_meetings.end(), [](Meeting item1, Meeting item2) {
+        return item1 < item2;
+        });
+
+    vector<Meeting> result;
+    for (size_t i = 0;i < i_meetings.size();i++)
+    {
+        Meeting& _m = i_meetings[i];
+        if ((i+1< i_meetings.size()) && i_meetings[i].isOverLapped(i_meetings[i + 1]))
+        {
+            _m.setStartTime(i_meetings[i].getStartTime());
+            _m.setEndTime( max(i_meetings[i].getEndTime(), i_meetings[i + 1].getEndTime()));
+            i_meetings[i + 1] = _m;
+        }
+        else 
+        {
+            result.push_back(i_meetings[i]);
+        }
+    }
+    return result;
+}
 
 
 int main()

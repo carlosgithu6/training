@@ -1,3 +1,11 @@
+/*
+
+Write a function to check that a binary tree ↴ is a valid binary search tree. ↴
+
+
+Write a function to find the 2nd largest element in a binary search tree. ↴
+*/
+
 #include <iostream>
 #include <memory>
 #include <queue>
@@ -40,7 +48,7 @@ public:
 };
 
 
-int findSecondLargest(const BinaryTreeNode* root)
+int findSecondLargestBAD(const BinaryTreeNode* root)
 {
     if (!root) throw invalid_argument("");
     const BinaryTreeNode* ptr_tree = root;
@@ -129,7 +137,17 @@ bool isBinarySearchTree(const BinaryTreeNode* root)
 }
    
 
-
+int findSecondLargest(const BinaryTreeNode* rootNode)
+{
+    auto node_and_pather = findLargestNode(rootNode,nullptr);
+    if (!node_and_pather.first->left_ )
+        return node_and_pather.second->value_;
+    else
+    {
+       return findLargestNode(node_and_pather.first->left_, node_and_pather.first).first->value_;
+    }
+   
+}
 
 // tests
 

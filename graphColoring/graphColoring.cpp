@@ -1,3 +1,26 @@
+/**
+Given an undirected graph ↴ with maximum degree ↴ 
+D, find a graph coloring ↴ using at most D+1
+colors.
+
+For example:
+
+First described by Robert Frucht in 1939, the Frucht graph is a 3-regular graph with 12 vertices, 18 edges, and no nontrivial symmetries.
+This graph's maximum degree (
+D
+D) is 3, so we have 4 colors (
+D
++
+1
+D+1). Here's one possible coloring:
+
+The Frucht graph with legal coloring.
+Graphs are represented by a vector of 
+N
+N node objects, each with a label, an unordered set of neighbors, and a color:
+
+*/
+
 #include <algorithm>
 #include <iostream>
 #include <memory>
